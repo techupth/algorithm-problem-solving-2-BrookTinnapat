@@ -1,10 +1,19 @@
 function findStudentIndex(students, searchStudent) {
-  // เริ่มเขียนโค้ดตรงนี้จ้า
-  for (let i = 0; i <= students.length; i++) {
-    if (students[i] === searchStudent) {
-      return i;
+  let left = 0;
+  let right = students.length - 1;
+
+  while (left <= right) {
+    let middle = Math.floor((left + right) / 2);
+
+    if (students[middle] === searchStudent) {
+      return middle;
+    } else if (students[middle] < searchStudent) {
+      left = middle + 1;
+    } else {
+      right = middle - 1;
     }
   }
+
   return -1;
 }
 
